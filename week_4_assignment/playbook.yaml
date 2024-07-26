@@ -1,0 +1,7 @@
+---
+- hosts: my_hosts
+  become: yes
+  roles:
+    - docker_setup
+    - nginx_container
+...

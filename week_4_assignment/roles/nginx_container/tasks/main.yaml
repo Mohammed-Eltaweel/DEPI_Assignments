@@ -1,0 +1,18 @@
+---
+
+- name: pulling nginx image from docker hub
+  docker_image:
+    name: nginx
+    source: pull
+
+
+- name: run nginx container
+  docker_container:
+    name: nginx_1
+    image: nginx
+    state: started
+    ports:
+      - "3000:80"
+
+
+...

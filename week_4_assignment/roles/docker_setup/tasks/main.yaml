@@ -1,0 +1,36 @@
+---
+
+- name: update cach
+  dnf:
+    update_cache: true
+
+- name: adding docker repo 
+  command:  sudo yum-config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
+  register: docker_repo
+
+- name: install docker GPG key
+  rpm_key:
+    key: "https://download.docker.com/linux/ubuntu/gpg"
+    state: present
+
+
+- name: installing docker
+  dnf:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+    state: latest
+
+- name: ensuring the docker daemon is enabled
+  service:
+    name: docker.service
+    state: started
+    enabled: true
+    
+
+
+
+...
