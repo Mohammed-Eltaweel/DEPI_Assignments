@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-config
+  namespace: blog
+  labels:
+    app: blog
+data:
+  database-name: mydatabase
+  user: myuser
+
